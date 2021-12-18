@@ -40,4 +40,11 @@ app.delete("/users/:id", function (req, res) {
 
   return res.json(idUser);
 });
+
+// GET By ID
+app.get("/users/:id", function (req, res) {
+  const idUser = req.params;
+
+  return res.json(idUser);
+});
 app.listen(3000);
