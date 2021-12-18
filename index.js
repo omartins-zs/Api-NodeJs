@@ -18,4 +18,11 @@ app.get("/users", function (req, res) {
   return res.json(users);
 });
 
+// POST
+app.post("/users", function (req, res) {
+  const user = { ...req.body };
+
+  return res.json(user);
+});
+
 app.listen(3000);
