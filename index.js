@@ -33,4 +33,11 @@ app.put("/users/:id", function (req, res) {
 
   return res.json(idUser);
 });
+
+// DELETE
+app.delete("/users/:id", function (req, res) {
+  const idUser = req.params;
+
+  return res.json(idUser);
+});
 app.listen(3000);
