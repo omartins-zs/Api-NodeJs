@@ -25,4 +25,12 @@ app.post("/users", function (req, res) {
   return res.json(user);
 });
 
+// PUT
+app.put("/users/:id", function (req, res) {
+  const idUser = req.params;
+
+  const user = { ...req.body };
+
+  return res.json(idUser);
+});
 app.listen(3000);
