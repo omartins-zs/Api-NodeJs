@@ -44,7 +44,9 @@ bower_components
 construir / liberar
 
 # Diretórios de dependência
-node_modules /
+**node_modules /
+*/node_modules/*
+/node_modules
 jspm_packages /
 
 # Diretório de dependência do Snowpack (https://snowpack.dev/)
