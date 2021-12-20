@@ -1,4 +1,5 @@
 module.exports = (app) => {
+  // GET
   const get = (req, res) => {
     const users = [
       {
@@ -13,5 +14,13 @@ module.exports = (app) => {
 
     return res.json(users);
   };
-  return { get };
+  // POST / SAVE
+
+  const save = (req, res) => {
+    const user = { ...req.body };
+
+    return res.json(user);
+  };
+
+  return { get, save };
 };
