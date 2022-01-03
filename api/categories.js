@@ -1,4 +1,10 @@
 module.exports = (app) => {
+  const get = (req, res) => {
+    const categories = await app.database("categories").select("*");
+
+    return res.json(categories);
+  };
+
   const save = async (req, res) => {
     const category = { ...req.body };
 
@@ -27,5 +33,5 @@ module.exports = (app) => {
     return res.json(user);
   };
 
-  return { save };
+  return { save, get };
 };
