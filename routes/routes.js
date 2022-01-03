@@ -4,5 +4,6 @@ module.exports = (app) => {
   app
     .route("/categories")
     .get(app.api.categories.get)
-    .post(app.api.categories.save);
+    .post(app.api.categories.save)
+    .delete(app.api.categories.delete);
 };
