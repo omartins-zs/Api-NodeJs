@@ -5,5 +5,5 @@ module.exports = (app) => {
     .route("/categories")
     .get(app.api.categories.get)
     .post(app.api.categories.save)
-    .delete(app.api.categories.delete);
+    .delete(app.api.categories.remove);
 };
