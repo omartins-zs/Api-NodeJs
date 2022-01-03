@@ -1,5 +1,5 @@
 module.exports = (app) => {
-  const get = (req, res) => {
+  const get = async (req, res) => {
     const categories = await app.database("categories").select("*");
 
     return res.json(categories);
