@@ -33,5 +33,25 @@ module.exports = (app) => {
     return res.json(user);
   };
 
-  return { save, get };
+  const remove = async (req, res) => {
+    const idCategory = req.params.id;
+
+    if (!idCategory) {
+      return res.status(400).json({ error: "Id da categoria não informado" });
+    }
+    const categoryExists = app
+      .database("categories")
+      .where({ id: idCategory })
+      .first();
+
+    if (!categoryExists) {
+      return res.status(400).json({ error: "Categoria nao encontrada" });
+    }
+
+    app.database("categories").where({ id: idCategory }).del();
+
+    res.status(204).send();
+  };
+
+  return { get, save, remove };
 };
