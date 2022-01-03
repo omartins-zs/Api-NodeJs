@@ -1,6 +1,7 @@
 module.exports = (app) => {
   // GET
   const get = (req, res) => {
+
     const users = [
       {
         id: 1,
@@ -17,6 +18,7 @@ module.exports = (app) => {
   // POST / SAVE
 
   const save = (req, res) => {
+    
     const user = { ...req.body };
 
     return res.json(user);

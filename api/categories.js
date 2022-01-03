@@ -1,11 +1,14 @@
 module.exports = (app) => {
+
   const get = async (req, res) => {
+    
     const categories = await app.database("categories").select("*");
 
     return res.json(categories);
   };
 
   const save = async (req, res) => {
+
     const category = { ...req.body };
 
     // Validaçao Nome da Imagem
@@ -34,6 +37,7 @@ module.exports = (app) => {
   };
 
   const remove = async (req, res) => {
+
     const idCategory = req.params.id;
 
     if (!idCategory) {
