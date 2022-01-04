@@ -9,5 +9,6 @@ module.exports = (app) => {
     .post(app.api.categories.save);
 
   app.route("/categories/:id")
+  .get(app.api.categories.getById)
   .delete(app.api.categories.remove);
 };
