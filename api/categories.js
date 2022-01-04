@@ -29,6 +29,10 @@ module.exports = (app) => {
 
     const category = { ...req.body };
 
+    if (req.params.id) {
+      category.id = req.params.id;
+    }
+
     // Validaçao Nome da Imagem
     if (!category.name) {
       return res.status(400).json({ error: "Nome da categoria nao informado" });
@@ -45,12 +49,23 @@ module.exports = (app) => {
 
     category.image = "category.png";
 
-    app
-      .database("categories")
-      .insert(category)
-      .then(() => res.status(200).send())
-      .catch((err) => res.status(500).send(err));
+        if (req.params.id) {
 
+        await  app
+            .database("categories")
+            .update(category)
+            .where({ id: category.id})
+            .then(() => res.status(200).send())
+            .catch((err) => res.status(500).send(err));
+        }else{
+
+         await app
+           .database("categories")
+           .insert(category)
+           .then(() => res.status(200).send())
+           .catch((err) => res.status(500).send(err));
+          
+        }
     return res.json(user);
   };
 
