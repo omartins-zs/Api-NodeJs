@@ -43,7 +43,7 @@ module.exports = (app) => {
     if (!idCategory) {
       return res.status(400).json({ error: "Id da categoria não informado" });
     }
-    const categoryExists = app
+    const categoryExists = await app
       .database("categories")
       .where({ id: idCategory })
       .first();
@@ -52,7 +52,7 @@ module.exports = (app) => {
       return res.status(400).json({ error: "Categoria nao encontrada" });
     }
 
-    app.database("categories").where({ id: idCategory }).del();
+    await app.database("categories").where({ id: idCategory }).del();
 
     res.status(204).send();
   };
