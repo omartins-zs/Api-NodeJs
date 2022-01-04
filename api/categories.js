@@ -7,6 +7,15 @@ module.exports = (app) => {
     return res.json(categories);
   };
 
+  const getById = async (req, res) => {
+
+    const idCategory = req.params.id;
+
+    const category = await app.database("categories").where({id: idCategory}).first();
+
+    return res.json(category);
+  }
+
   const save = async (req, res) => {
 
     const category = { ...req.body };
@@ -57,5 +66,5 @@ module.exports = (app) => {
     res.status(204).send();
   };
 
-  return { get, save, remove };
+  return { get, getById, save, remove };
 };
