@@ -11,6 +11,15 @@ module.exports = (app) => {
 
     const idCategory = req.params.id;
 
+    const categoryExists = await app
+      .database("categories")
+      .where({ id: idCategory })
+      .first();
+
+    if (!categoryExists) {
+      return res.status(400).json({ error: "Categoria nao encontrada" });
+    }
+
     const category = await app.database("categories").where({id: idCategory}).first();
 
     return res.json(category);
